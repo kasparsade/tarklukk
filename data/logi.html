@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shape" id="pea">
+  <a href="logi">Logi</a><br>
+  <a href="juurdepaas">Juurdepääs</a><br>
+  <a href="#" id="logivaljafunc">Logi välja</a>
+  <a href="/logi.csv" class="greenButton downloadButton">Lae logifail alla (.csv)</a>
+  </div>
+<div class="shape shape2" id="tbl">
+	<table id="header"><tr></tr><td>Nimi</td><td>Kell</td><td>Kuupäev</td></table>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript"charset="utf-8">
+            $.get('/logi.csv', function(logi) {
+
+			var tabel = '<table>';
+			var read = logi.split("\n");
+			var count = 0;
+			read.forEach( function getvalues(rida) {
+			tabel += "<tr>";
+			var tulbad = rida.split(",");
+			if (typeof tulbad[2] == 'undefined') {
+				return;
+			}
+			tabel += "<td>" + tulbad[0] + "</td>";
+			tabel += "<td>" + tulbad[1] + "</td>";
+			tabel += "<td>" + tulbad[2] + "</td>";
+			tabel += "</tr>";
+			count++;
+			})
+			tabel += "</table>";
+
+			$('#tbl').append(tabel);
+
+			});
+		</script>
+		<script type="text/javascript"charset="utf-8">
+		function logivalja() {
+			var lv = new XMLHttpRequest();
+			lv.open("GET", "/logivalja", true);
+			lv.send();
+		}
+		$("#logivaljafunc").click(function(){
+			logivalja();
+			setTimeout(function() {
+				window.open("/valjalogitud","_self"); 
+			}, 1000);
+		});
+		</script>
+</div>
+</body>
+</html>

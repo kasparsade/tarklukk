@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shape" id="pea">
+  <a href="logi">Logi</a><br>
+  <a href="juurdepaas">Juurdepääs</a><br>
+  <a href="#" id="logivaljafunc">Logi välja</a>
+  <form class="delid addid" action="/lisa" method="post" id="lisamine">
+  <label for="lisa">Sisesta nimi, mida lisada:</label>
+  <input type="text" id="lisa" name="lisa"><br><br>
+  <input class="greenButton redButton greenButton2" type="submit" value="lisa">
+  </form>
+  </div>
+<div class="shape shape2 shape2j" id="tbl2">
+	<table id="header"><tr><td id="td2">UID</td><td id="td2">Nimi</td><td id="td2"> </td></tr></table>
+</div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript"charset="utf-8">
+            $.get('/inimesed.csv', function(inimesed) {
+
+			var tabel = '<table>';
+			var read = inimesed.split("\n");
+			var count = 0;
+			read.forEach( function getvalues(rida) {
+			tabel += "<tr>";
+			var tulbad = rida.split(",");
+			if (typeof tulbad[1] == 'undefined') {
+				return;
+			}
+			tabel += "<td>" + tulbad[0] + "</td>";
+			tabel += "<td>" + tulbad[1] + "</td>";
+			tabel += "<td>" + '<form action="/kustuta" method="post"><button type="submit" class="kustuta" name="kustuta" value="' + count + '" onclick="return confirm(\'\Kas soovid kustutada?\'\)">Kustuta</button></form>' + "</td>";
+			tabel += "</tr>";
+			count++;
+			})
+			tabel += "</table>";
+
+			$('#tbl2').append(tabel);
+
+			});
+		</script>
+		<script type="text/javascript"charset="utf-8">
+		function logivalja() {
+			var lv = new XMLHttpRequest();
+			lv.open("GET", "/logivalja", true);
+			lv.send();
+		}
+		$("#logivaljafunc").click(function(){
+			logivalja();
+			setTimeout(function() {
+				window.open("/valjalogitud","_self"); 
+			}, 1000);
+		});
+		</script>
+</body>
+</html>

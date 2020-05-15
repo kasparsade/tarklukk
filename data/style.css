@@ -1,0 +1,118 @@
+.shape {
+  height: 50vh;
+  width: 50vw;
+  background-color: #ffa500;
+  border-radius: 5px;
+  padding-left: 1vw;
+  padding-top: 2vh;
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  position: relative;
+}
+.shape2 {
+  width: 39vw;
+  background-color: white;
+  margin-right: -10.5vw;
+  margin-top: -3vh;
+  padding-top: 0vh;
+  float: top;
+  height: 48vh;
+  overflow-y: scroll;
+  overflow-x: hidden; 
+  position: absolute;
+}
+
+.shape2j {
+  margin-top: -11vh;
+  height: 40vh;
+}
+
+/*.shape3 {
+  background-color: orange;
+  width: 39vw;
+  height: 10vh;
+  margin-right: -10.5vw;
+  margin-bottom: -40vh;
+  position: absolute;
+  justify-content: left;
+  font-size: 1em;
+  padding-left: 0;
+}*/
+
+body, html {
+  height: 100%;
+}
+
+body {
+  background-color: #001f3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table { 
+  width: 100%;
+  color: black;
+  font-weight: normal;
+  justify-content: center;
+  align-items: center;
+}
+
+#header {
+  width: 100%;
+  font-weight: bold;
+}
+
+#td2 {
+  width: 10%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.greenButton {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  font-size: 0.7em;
+  border-radius: 7px;
+  text-decoration: none;
+}
+
+.downloadButton {
+  position: absolute;
+  bottom: 0.5vh;
+  right: 0.5vw;
+}
+
+.redButton {
+  background-color: red;
+  right: 0.5vw;
+  margin-left: 1vw;
+  width: 4vw;
+}
+
+.delid {
+  position: absolute;
+  bottom: 0.5vh;
+  right: 5vw;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.delid label {
+  margin: 10px 10px 10px 0;
+}
+
+.greenButton2 {
+  bottom: 4vh;
+  background-color: #4CAF50;
+}
+
+.addid {
+  bottom: 4vh;
+}
